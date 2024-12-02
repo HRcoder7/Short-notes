@@ -140,12 +140,14 @@
 
 <script>
     function showPDF(pdf) {
-        document.getElementById('popupPDF').src = pdf;
+        const iframe = document.getElementById('popupPDF');
+        iframe.src = pdf + "#toolbar=0"; // Remove toolbar for a cleaner view
         document.getElementById('pdfPopup').style.display = 'flex';
     }
 
     function closePDF() {
         document.getElementById('pdfPopup').style.display = 'none';
+        document.getElementById('popupPDF').src = ""; // Reset src to stop loading
     }
 
     function submitFeedback() {
