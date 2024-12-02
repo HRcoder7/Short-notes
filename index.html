@@ -76,7 +76,7 @@
         #feedback button:hover {
             background-color: #45a049;
         }
-        .image-popup {
+        .pdf-popup {
             display: none;
             position: fixed;
             top: 0;
@@ -87,11 +87,12 @@
             justify-content: center;
             align-items: center;
         }
-        .image-popup img {
-            max-width: 90%;
-            max-height: 90%;
+        .pdf-popup iframe {
+            width: 90%;
+            height: 90%;
+            border: none;
         }
-        .image-popup span {
+        .pdf-popup span {
             position: absolute;
             top: 20px;
             right: 20px;
@@ -111,17 +112,17 @@
     <div class="section">
         <h2>Physics</h2>
         <div class="topics">
-            <button onclick="showImage('nlm.pdf')">NLM</button>
-            <button onclick="showImage('wep.jpg')">WEP</button>
-            <button onclick="showImage('gravitation.jpg')">Gravitation</button>
+            <button onclick="showPDF('nlm.pdf')">NLM</button>
+            <button onclick="showPDF('wep.pdf')">WEP</button>
+            <button onclick="showPDF('gravitation.pdf')">Gravitation</button>
         </div>
     </div>
     <div class="section">
         <h2>Chemistry</h2>
         <div class="topics">
-            <button onclick="showImage('basic.jpg')">basic chem.</button>
-            <button onclick="showImage('atom.jpg')">atom</button>
-            <button onclick="showImage('periodic table.jpg')">periodic table</button>
+            <button onclick="showPDF('basic_chem.pdf')">Basic Chemistry</button>
+            <button onclick="showPDF('atom.pdf')">Atom</button>
+            <button onclick="showPDF('periodic_table.pdf')">Periodic Table</button>
         </div>
     </div>
 </div>
@@ -132,19 +133,19 @@
     <button onclick="submitFeedback()">Submit</button>
 </div>
 
-<div class="image-popup" id="imagePopup">
-    <span onclick="closeImage()">&times;</span>
-    <img id="popupImage" src="" alt="Note Image">
+<div class="pdf-popup" id="pdfPopup">
+    <span onclick="closePDF()">&times;</span>
+    <iframe id="popupPDF" src="" allowfullscreen></iframe>
 </div>
 
 <script>
-    function showImage(image) {
-        document.getElementById('popupImage').src = image;
-        document.getElementById('imagePopup').style.display = 'flex';
+    function showPDF(pdf) {
+        document.getElementById('popupPDF').src = pdf;
+        document.getElementById('pdfPopup').style.display = 'flex';
     }
 
-    function closeImage() {
-        document.getElementById('imagePopup').style.display = 'none';
+    function closePDF() {
+        document.getElementById('pdfPopup').style.display = 'none';
     }
 
     function submitFeedback() {
